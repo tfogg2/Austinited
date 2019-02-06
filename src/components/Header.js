@@ -8,9 +8,7 @@ class Header extends Component {
           <h1><span>Austin</span>ited</h1>
         </div>
         <div className="right-nav">
-          <ul>
-
-          </ul>
+          <a href="https://www.instagram.com/austinitedtx/" target="_blank"><img className="insta" src={require('../assets/instagram-black.svg')} /></a>
         </div>
       </div>
     )
