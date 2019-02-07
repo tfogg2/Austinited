@@ -51,7 +51,8 @@ body{
   opacity: .5;
 }
 .header .logo h1{
-  color: #848484;
+  font-family: 'Montserrat', sans-serif;
+  color: #7b7b7b;
   font-size: 32px;
   font-weight: 300;
   margin: 0;
@@ -59,7 +60,7 @@ body{
 }
 .header .logo h1 span{
   color: #000;
-  font-weight: 900;
+  font-weight: 600;
 }
 .splash{
   background: #f5f5f5;
