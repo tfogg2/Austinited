@@ -7,7 +7,7 @@ class Splash extends Component{
       <div className="splash">
         <div className="splash-copy">
           <h1>Austinites. Unite.</h1>
-          <p>Moving to Austin with the intention of living like a local can leave you overwhelmed. I'm on a mission to make it easier for all of us.</p>
+          <p>I speak from experience when I say that moving to Austin with the intention of living like a local can leave you overwhelmed. <b>I'm on a mission to make it easier for all of us.</b></p>
         </div>
       </div>
     )
