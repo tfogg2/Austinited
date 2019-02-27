@@ -77,7 +77,6 @@ body{
   .splash .splash-copy{
     width: 30%;
     text-align: left;
-    padding: 50px 0;
   }
 }
 .splash-copy{
@@ -96,6 +95,9 @@ body{
   color: #7b7b7b;
 }
 @media (max-width: 479px){
+  .home .splash{
+    padding: 75px 0;
+  }
 }
 @media (min-width: 480px){
   .content .category{
