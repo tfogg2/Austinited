@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900');
+@import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
 
 div{
   width: 100%;
@@ -7,9 +8,8 @@ body{
 
 }
 .home{
-  height: 1800px;
-  background: #f5f5f5;
-  height: 90vh;
+  height: auto;
+  background: #fff;
 }
 .home .content, .cta{
   height: 600px;
@@ -27,6 +27,9 @@ body{
 .header .logo{
   width: 50%;
   float: left;
+}
+.header .logo a{
+  text-decoration: none;
 }
 .header .right-nav{
   width: 50%;
@@ -64,15 +67,15 @@ body{
 .splash{
   background: #f5f5f5;
   background-size: cover;
-  height: auto;
+  height: 92vh;
   box-sizing: border-box;
-  padding: 150px 0;
+  padding: 225px 0;
   font-family: 'Montserrat', sans-serif;
 }
 @media (min-width:480px){
   .splash .splash-copy{
     width: 30%;
-    text-align: center;
+    text-align: left;
   }
 }
 .splash-copy{
@@ -89,4 +92,58 @@ body{
 .splash-copy p{
   line-height: 22px;
   color: #7b7b7b;
+}
+@media (max-width: 479px){
+}
+@media (min-width: 480px){
+  .content .category{
+
+  }
+}
+.category{
+  width: 90%;
+  margin: 0 auto;
+}
+.category-item{
+  text-align: center;
+  width: 45%;
+  margin: 0 2.5%;
+  float: left;
+}
+.category-item img{
+  width: 100%;
+}
+.content .category{
+  height: auto;
+  width: 90%;
+  padding: 20px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+}
+.content .category h2{
+  font-size: 52px;
+  font-weight: 300;
+  color: #3e3e3e;
+  margin: 0px;
+}
+.content .category p{
+  margin: 10px auto 20px auto;
+  width: 100%;
+}
+.content .category .category-image{
+  background: #000;
+  width: 90%;
+  margin: 0 auto;
+}
+.content .category img{
+  width: 100%;
+  opacity: 1;
+  transition: opacity .1s ease;
+}
+.content .category img:hover{
+  opacity: .7;
+  cursor: pointer;
 }
