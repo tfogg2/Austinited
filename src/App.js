@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Home from './components/home/Home'
+import Content from './components/home/Content'
 import Parks from './components/categories/Parks'
 import Park from './components/categories/Park'
+import Cafes from './components/categories/Cafes'
 
 import './Main.scss';
 
@@ -15,8 +16,10 @@ class App extends Component {
         <div className="App">
           <Header />
           <Switch>
-            <Route exact path="/" render={() => <Home />} />
+            <Route exact path="/" render={() => <Content />} />
             <Route exact path="/parks" component={Parks} />
+            <Route path="/parks/" component={Park} />
+            <Route path="/cafes" component={Cafes} />
           </Switch>
         </div>
       </BrowserRouter>

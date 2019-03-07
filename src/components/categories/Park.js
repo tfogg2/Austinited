@@ -9,11 +9,6 @@ class Park extends Component {
     }
   }
 
-  componentDidMount() {
-    const { url } = this.props.match.params
-    const { title } = this.props.location.state
-  }
-
 
   render(){
     return(

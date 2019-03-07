@@ -1,40 +1,37 @@
 import React, { Component } from 'react'
-import HomeCategory from '../categories/HomeCategory'
+import { Link, NavLink } from 'react-router-dom'
+import Items from '../categories/Items'
+import Splash from './Splash.js'
 
-class Content extends Component{
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      categories: CATEGORIES
-    }
-  }
-
-  render(){
-
-    const Categories = ({ state: { categories } }) => (
-      <div>
-        {categories
-          .map(({ title, description, image, url }) => (
-            <HomeCategory title={title} description={description} image={image} url={url} />
-          ))}
-      </div>
+const ListCategories = (Categories) => (
+  Categories.map((category) => {
+    return (
+      <li>
+        <NavLink exact="true" to={ '/' + category } key={category} category={category} className={`${category}`}>
+          {category}
+        </NavLink>
+      </li>
     )
+  })
+)
 
+class Content extends Component {
+  render(){
     return(
-      <div className="content">
-        <Categories state={this.state}/>
+      <div>
+        <Splash />
+        {ListCategories(Categories)}
       </div>
     )
   }
 }
 
-// data
-const CATEGORIES = [
-  { title: "Parks", url: "parks", description: "This is an example description for a category to do with Austinited."},
-  { title: "Cafes", url:"cafes", description: "This is an example description for a category to do with Austinited."},
-  { title: "Happy Hour", url:"happyhour", description: "This is an example description for a category to do with Austinited."},
-  { title: "Cafes", description: "This is an example description for a category to do with Austinited."},
-]
+export default Content
 
-export default Content;
+
+const uniqueItems = (x, i, array) => array.indexOf(x) === i
+const Categories = Items.map(item => item.category).filter(
+  uniqueItems
+)
+
+Categories.sort()

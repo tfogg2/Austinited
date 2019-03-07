@@ -1,44 +1,75 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Items from './Items'
 
 class Parks extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      parks: PARKS
+      super(props);
+      this.state = {
+        page: 0,
+        limit: 1
+      }
     }
+
+  handleNext = () => {
+    this.setState(prevState => {
+        return {
+          page: prevState.page + 1,
+          limit: prevState.limit + 1,
+        }
+     })
+  }
+
+  handleBack = () => {
+    this.setState(prevState => {
+        return {
+          page: prevState.page - 1,
+          limit: prevState.limit - 1,
+        }
+     })
   }
 
   render(){
-    const ParkItems = () => (
-      <div className="parks">
-        {this.state.parks
-          .map(({ title, description, images, image,  url}) => (
-            <Link to={{
-              pathname: `/parks/${url}`,
-              state: {
-                title: {title},
-                description: {description},
-                images: {images},
-                image: {image},
-                url: {url}
-              }
-            }}
-            title={title} description={description} image={image} images={images}
-            >
-              <div className="category-item">
-                <h1>{title}</h1>
-                <p>{description}</p>
-                <img src={image} />
-              </div>
-            </Link>
-          ))}
-      </div>
-    )
-
+    const Length = {
+      value: Items.filter(
+          ({ category }) =>
+            category === "Parks"
+        ).length
+    }
     return(
       <div className="category">
-        <ParkItems />
+        <h1>Parks</h1>
+        {Items.slice(this.state.page, this.state.limit).filter(
+            ({ category }) =>
+              category === "Parks"
+          ).map((item, index) => {
+            const note = {
+              handle: item.handle,
+            }
+            const id = {
+              value: item.id
+            }
+            const page = {
+              value: this.state.page + 1
+            }
+            return (
+              <div>
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
+                {this.state.page > 0 ? <button onClick={this.handleBack}>Back</button> : " " }
+                {Length.value > page.value ? <button onClick={this.handleNext}>Next</button> : " " }
+                {Images.filter(({handle}) => (
+                  handle === note.handle
+                )).map(({ image, handle }) => {
+                  return(
+                    <div>
+                      <img src={image} alt={handle}/>
+                    </div>
+                  )
+                })}
+              </div>
+            )
+        })}
       </div>
     )
   }
@@ -47,33 +78,8 @@ class Parks extends Component {
 export default Parks
 
 
-const PARKS = [
-  {title: "Greenbelt: Spyglass Entrance", url:"spyglass", description: "This is an example description for a category to do with Austinited.",
-    image: require("../../assets/barton.jpeg"),
-    images: [
-      {image: require("../../assets/barton.jpeg")},
-      {image: require("../../assets/barton.jpeg")}
-    ]
-  },
-  {title: "Greenbelt: Spyglass Entrance", url:"spyglass", description: "This is an example description for a category to do with Austinited.",
-    image: require("../../assets/barton.jpeg"),
-    images: [
-      {image: require("../../assets/barton.jpeg")},
-      {image: require("../../assets/barton.jpeg")}
-    ]
-  },
-  {title: "Greenbelt: Spyglass Entrance", url:"spyglass", description: "This is an example description for a category to do with Austinited.",
-    image: require("../../assets/barton.jpeg"),
-    images: [
-      {image: require("../../assets/barton.jpeg")},
-      {image: require("../../assets/barton.jpeg")}
-    ]
-  },
-  {title: "Greenbelt: Spyglass Entrance", url:"spyglass", description: "This is an example description for a category to do with Austinited.",
-    image: require("../../assets/barton.jpeg"),
-    images: [
-      {image: require("../../assets/barton.jpeg")},
-      {image: require("../../assets/barton.jpeg")}
-    ]
-  }
+const Images = [
+  {image: require('../../assets/parks/zilker.png'), handle:"zilker"},
+  {image: require('../../assets/parks/zilker.png'), handle:"bang"},
+  {image: require('../../assets/parks/zilker.png'), handle:"bang"},
 ]
