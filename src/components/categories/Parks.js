@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Items from './Items'
+import ParkItems from './ParkItems'
+import { ScrollView } from 'react';
+
 
 class Parks extends Component {
   constructor(props) {
@@ -29,17 +31,25 @@ class Parks extends Component {
      })
   }
 
+  handleTouchStart = () => {
+    this.setState(prevState => {
+        return {
+          page: prevState.page + 1,
+          limit: prevState.limit + 1,
+        }
+     })
+  }
+
   render(){
     const Length = {
-      value: Items.filter(
+      value: ParkItems.filter(
           ({ category }) =>
             category === "Parks"
         ).length
     }
     return(
       <div className="category">
-        <h1>Parks</h1>
-        {Items.slice(this.state.page, this.state.limit).filter(
+        {ParkItems.slice(this.state.page, this.state.limit).filter(
             ({ category }) =>
               category === "Parks"
           ).map((item, index) => {
@@ -53,14 +63,28 @@ class Parks extends Component {
               value: this.state.page + 1
             }
             return (
-              <div>
-                <h2>{item.title}</h2>
-                <p>{item.description}</p>
-                {this.state.page > 0 ? <button onClick={this.handleBack}>Back</button> : " " }
-                {Length.value > page.value ? <button onClick={this.handleNext}>Next</button> : " " }
+              <div onTouchStart={this.handleTouchStart}>
+                <div className="category-header">
+                  {Images.filter(({handle}) => (
+                    handle === note.handle
+                  )).slice(0, 1).map(({ image, handle }) => {
+                    return(
+                      <div>
+                        <img className="header-image" src={image} alt={handle}/>
+                      </div>
+                    )
+                  })}
+                  {this.state.page > 0 ? <button className="cycle-btn back-btn" onClick={this.handleBack}></button> : " " }
+                  {Length.value > page.value ? <button className="cycle-btn next-btn" onClick={this.handleNext}></button> : " " }
+                  <div className="header-text">
+                    <h2>{item.title}</h2>
+                    <a href={item.address_link} target="_blank">{item.address}</a>
+                    <p>{item.description}</p>
+                  </div>
+                </div>
                 {Images.filter(({handle}) => (
                   handle === note.handle
-                )).map(({ image, handle }) => {
+                )).slice(1, 10).map(({ image, handle }) => {
                   return(
                     <div>
                       <img src={image} alt={handle}/>
@@ -79,7 +103,6 @@ export default Parks
 
 
 const Images = [
-  {image: require('../../assets/parks/zilker.png'), handle:"zilker"},
-  {image: require('../../assets/parks/zilker.png'), handle:"bang"},
-  {image: require('../../assets/parks/zilker.png'), handle:"bang"},
+  {image: require('../../assets/parks/zilker.png'), handle:"spyglass"},
+  {image: require('../../assets/parks/zilker.png'), handle:"spyglass"},
 ]

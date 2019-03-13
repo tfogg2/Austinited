@@ -19,5 +19,12 @@
     "category": "Cafes",
     "description": "Dank.",
     "handle":"quacks"
+  },
+  {
+    "id": 4,
+    "title": "Quack's Bakery",
+    "category": "Cafes",
+    "description": "Dank.",
+    "handle":"quacks"
   }
 ]

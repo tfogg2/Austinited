@@ -19,7 +19,7 @@ class App extends Component {
             <Route exact path="/" render={() => <Content />} />
             <Route exact path="/parks" component={Parks} />
             <Route path="/parks/" component={Park} />
-            <Route path="/cafes" component={Cafes} />
+            <Route exact path="/cafes" component={Cafes} />
           </Switch>
         </div>
       </BrowserRouter>
